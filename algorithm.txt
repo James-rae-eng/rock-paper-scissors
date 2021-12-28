@@ -1,0 +1,42 @@
+display message "do you want to start game, y/n"
+create variable for user input.
+If user inputs N then do nothing
+else if user inputs Y then continue
+
+computer function to randomly generate rock/paper or scissors
+store computer generation in a variable
+
+Ask user to type rock/paper or scissors.
+take user input and store in variable (make sure user input is case-insensitive)
+
+compare computer and user inputs.
+
+If user=rock & computer=paper
+	return "you lose"
+else if computer=rock
+	return "draw, try again"
+else if computer=scissors
+	return "you win"
+
+If user=paper & computer=scissors
+	return "you lose"
+else if computer=paper
+	return "draw, try again"
+else if computer=rock
+	return "you win"
+
+If user=scissors & computer=rock
+	return "you lose"
+else if computer=scissors
+	return "draw, try again"
+else if computer=paper
+	return "you win"
+
+
+new function called game() to log wins and losses of user over 5 rounds
+create variable userWins
+create variable computerWins
+if playerWins==5
+	return "you have 5 wins, you win the round"
+Else if computerWins ==5
+	return "computer has 5 wins, you lose the round"
