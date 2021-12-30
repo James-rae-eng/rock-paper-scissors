@@ -14,58 +14,73 @@
         //If user inputs N then do nothing
         //else if user inputs Y then continue
         
-        //computer function to randomly generate rock/paper or scissors     
-        function computerPlay(){
+        //new function called game() to log wins and losses of user over 5 rounds
+        function game() {
+            //#computer function to randomly generate rock/paper or scissors
+            function computerPlay(){
             let selection = ["rock","paper","scissors"],
             selectionToUse = selection[Math.floor(Math.random() * selection.length)];
             return selectionToUse;
-        }
-        //store computer generation in a variable
-        let computerSelection = computerPlay();
-      
-        //Ask user to type rock/paper or scissors.
-        //take user input and store in variable (make sure user input is case-insensitive)
-        let playerInitialSelection = prompt("please type rock, paper or scissors");
-        let playerSelection = playerInitialSelection.toLocaleLowerCase();
-        //compare computer and user inputs.
-        //If user=rock & computer=paper
-        //    return "you lose"
-        //else if computer=rock
-        //    return "draw, try again"
-        //else if computer=scissors
-        //   return "you win"
-
-        //If user=paper & computer=scissors
-        //    return "you lose"
-        //else if computer=paper
-        //    return "draw, try again"
-        //else if computer=rock
-        //    return "you win"
-
-        //If user=scissors & computer=rock
-        //    return "you lose"
-        //else if computer=scissors
-        //    return "draw, try again"
-        //else if computer=paper
-        //    return "you win"
-        
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === "rock" & computerSelection === "paper") {
-                return "you lose";
-            } else if (playerSelection === "rock" & computerSelection === "rock"){
-                return "draw, try again";
-            } else if (playerSelection === "rock" & computerSelection === "scissors"){
-                return "you win";
             }
-            
-        
-        
-        }
-        console.log(playRound(playerSelection, computerSelection));
+            //#store computer generation in a variable
+            let computerSelection = computerPlay();
 
-        //new function called game() to log wins and losses of user over 5 rounds
+            //#Ask user to type rock/paper or scissors.
+            //#take user input and store in variable (make sure user input is case-insensitive)
+            let playerInitialSelection = prompt("please type rock, paper or scissors");
+            let playerSelection = playerInitialSelection.toLocaleLowerCase();
+
+             //compare computer and user inputs.
+            //If user=rock & computer=paper
+            //    return "you lose"
+            //else if computer=rock
+            //    return "draw, try again"
+            //else if computer=scissors
+            //   return "you win"
+            //etc
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === "rock" & computerSelection === "paper") {
+                    return "you lose";
+                } else if (playerSelection === "rock" & computerSelection === "rock"){
+                    return "draw, try again";
+                } else if (playerSelection === "rock" & computerSelection === "scissors"){
+                    return "you win";
+                }
+
+                else if (playerSelection === "paper" & computerSelection === "rock"){
+                    return "you win";
+                }
+                else if (playerSelection === "paper" & computerSelection === "paper"){
+                    return "draw, try again";
+                }
+                else if (playerSelection === "paper" & computerSelection === "scissors"){
+                    return "you lose";
+                }
+
+                else if (playerSelection === "scissors" & computerSelection === "paper"){
+                    return "you win";
+                }
+                else if (playerSelection === "scissors" & computerSelection === "scissors"){
+                    return "draw, try again";
+                }
+                else if (playerSelection === "scissors" & computerSelection === "rock"){
+                    return "you lose";
+                }
+                else {
+                    return "incorrect choice, please choose rock or paper or scissors"
+                }
+            }
+            //console.log(playRound(playerSelection, computerSelection)); 
+            let outcome = playRound(playerSelection, computerSelection);
+            console.log(outcome);
+        }
+        game();
+        
         //create variable userWins
         //create variable computerWins
+        
+
+
         //if playerWins==5
         //    return "you have 5 wins, you win the round"
         //Else if computerWins ==5
