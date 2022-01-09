@@ -8,103 +8,113 @@
 </head>
 <body>
     <h1>Rock, paper, scissors</h1>
+    <div id='btnWrapper'> 
+        <button id="rock" class="button">rock</button>
+        <button id="paper" class="button">paper</button>
+        <button id="scissors" class="button">scissors</button>
+    </div>
+
+
+
+
+
+
     <script>
     
-        //create variable userWins
-        //create variable userDraw
-        //create variable userLose
         let counterWin = 0;
         let counterDraw = 0;
         let counterLose = 0;
 
-        //do while loop to iterate until 3 wins/losses/draws are achieved    
-        do {  
-            //function to play a single game
-            function game() {
-                //computer function to randomly generate rock/paper or scissors
-                function computerPlay(){
-                let selection = ["rock","paper","scissors"],
-                selectionToUse = selection[Math.floor(Math.random() * selection.length)];
-                return selectionToUse;
-                }
-                //store computer generation in a variable
-                let computerSelection = computerPlay();
+        let playerSelection = "";
+        let buttons = document.querySelectorAll('.button');
 
-                //Ask user to type rock/paper or scissors.
-                //take user input and store in variable (make sure user input is case-insensitive)
-                let playerInitialSelection = prompt("please type rock, paper or scissors");
-                let playerSelection = playerInitialSelection.toLocaleLowerCase();
-
-                //compare computer and user inputs.
-                //If user=rock & computer=paper
-                //    return "you lose"
-                //else if computer=rock
-                //    return "draw, try again"
-                //else if computer=scissors
-                //   return "you win"
-                //etc
-                function playRound(playerSelection, computerSelection) {
-                    if (playerSelection === "rock" & computerSelection === "paper") {
-                        return "you lose";
-                    } else if (playerSelection === "rock" & computerSelection === "rock"){
-                        return "draw, try again";
-                    } else if (playerSelection === "rock" & computerSelection === "scissors"){
-                        return "you win";
-                    }
-
-                    else if (playerSelection === "paper" & computerSelection === "rock"){
-                        return "you win";
-                    }
-                    else if (playerSelection === "paper" & computerSelection === "paper"){
-                        return "draw, try again";
-                    }
-                    else if (playerSelection === "paper" & computerSelection === "scissors"){
-                        return "you lose";
-                    }
-
-                    else if (playerSelection === "scissors" & computerSelection === "paper"){
-                        return "you win";
-                    }
-                    else if (playerSelection === "scissors" & computerSelection === "scissors"){
-                        return "draw, try again";
-                    }
-                    else if (playerSelection === "scissors" & computerSelection === "rock"){
-                        return "you lose";
-                    }
-                    else {
-                        return "incorrect choice, please choose rock or paper or scissors"
-                    }
-                }
-                let outcome = playRound(playerSelection, computerSelection);
-                console.log(outcome);
-
-                //loop to count & log the result of a game.
-                if (outcome === "you win") {
-                    counterWin += 1;
-                   }
-                else if (outcome === "draw, try again") {
-                    counterDraw += 1;
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                playerSelection = button.id;
+                //console.log(playerSelection);
+                if (counterWin < 3 && counterDraw < 3 && counterLose <3) {
+                    game();
                 }
                 else {
-                    counterLose += 1;
+                    sumGame();
+                }
+            });
+        });    
+
+        //function to play a single game
+        function game() {
+            //computer function to randomly generate rock/paper or scissors
+            function computerPlay(){
+            let selection = ["rock","paper","scissors"],
+            selectionToUse = selection[Math.floor(Math.random() * selection.length)];
+                return selectionToUse;
+            }
+            let computerSelection = computerPlay();
+
+            //Ask user to type input & store
+            //let playerInitialSelection = prompt("please type rock, paper or scissors");
+            //let playerSelection = playerInitialSelection.toLocaleLowerCase();
+
+            //compare computer and user inputs.
+            function playRound(playerSelection, computerSelection) {
+                    
+                if (playerSelection === "rock" & computerSelection === "paper") {
+                    return "you lose";
+                } else if (playerSelection === "rock" & computerSelection === "rock"){
+                    return "draw, try again";
+                } else if (playerSelection === "rock" & computerSelection === "scissors"){
+                   return "you win";
+                }
+
+                else if (playerSelection === "paper" & computerSelection === "rock"){
+                    return "you win";
+                }
+                else if (playerSelection === "paper" & computerSelection === "paper"){
+                    return "draw, try again";
+                }
+                else if (playerSelection === "paper" & computerSelection === "scissors"){
+                    return "you lose";
+                }
+
+                else if (playerSelection === "scissors" & computerSelection === "paper"){
+                    return "you win";
+                }
+                else if (playerSelection === "scissors" & computerSelection === "scissors"){
+                    return "draw, try again";
+                }
+                else if (playerSelection === "scissors" & computerSelection === "rock"){
+                    return "you lose";
+                }
+                else {
+                    return "incorrect choice, please choose rock or paper or scissors"
                 }
             }
-            game();
-        }
-        while (counterWin < 3 && counterDraw < 3 && counterLose <3);
+            let outcome = playRound(playerSelection, computerSelection);
+            console.log(outcome);
 
+            //loop to count & log the result of a game.
+            if (outcome === "you win") {
+                counterWin += 1;
+               }
+            else if (outcome === "draw, try again") {
+                counterDraw += 1;
+            }
+            else {
+                counterLose += 1;
+            }
+        }    
+        
         //add up wins/losses and give result
-        if (counterWin === 3) {
-            console.log("you have 3 wins, you win the game");
-        }
-        else if (counterLose === 3) {
-            console.log("computer has 3 wins, you lose the game");
-        }
-        else if (counterDraw === 3) {
-            console.log("it's a draw");
-        }
-        else {
-            console.log("next game");
+        function sumGame(){
+            if (counterWin === 3) {
+                console.log("you have 3 wins, you win the game");
+            }
+            else if (counterLose === 3) {
+                console.log("computer has 3 wins, you lose the game");
+            }
+            else if (counterDraw === 3) {
+                console.log("it's a draw, better luck next time");
+            }
         }
 
     </script>
