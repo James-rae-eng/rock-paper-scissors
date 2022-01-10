@@ -4,26 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, paper, scissors game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock, paper, scissors</h1>
-    <div id='btnWrapper'> 
-        <button id="rock" class="button">rock</button>
-        <button id="paper" class="button">paper</button>
-        <button id="scissors" class="button">scissors</button>
+    <h1>ROCK PAPER SCISSORS</h1>
+
+    <div class="description"> 
+        <p class="left">See if you can beat the computer<p>
+        <p class="right">First to 3 wins!<p>
+    </div>
+    
+    <h2>Make your choice:</h2>
+    
+    <div class="container">
+        <div class="info">
+          <img src="./images/rock.jpg" alt="rock">
+          <button id="rock" class="button">rock</button>
+        </div>
+        <div class="info">
+          <img src="./images/paper.jpg" alt="paper">
+          <button id="paper" class="button">paper</button>
+        </div>
+        <div class="info">
+          <img src="./images/scissors.jpg" alt="scissors">
+          <button id="scissors" class="button">scissors</button>
+        </div>
     </div>
 
+    <div class="scores">
+        <div> </div>
+        <div id="playerScore"></div>
 
+        <div id="computerScore"></div>
 
-
-
-
+    </div>
+    
     <script>
     
         let counterWin = 0;
         let counterDraw = 0;
         let counterLose = 0;
+        
 
         let playerSelection = "";
         let buttons = document.querySelectorAll('.button');
