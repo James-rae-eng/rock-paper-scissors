@@ -13,12 +13,6 @@ h1 {
   margin: 10px 0px;
 }
 
-.description {
-  font-size: 24px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
 
 .button {
     margin: 10px 0px 0px 90px;
@@ -56,4 +50,24 @@ h2 {
 
 .info {
   max-width: 300px;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 100px;
+  margin-bottom: 30px;
+}
+
+#roundResults {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#replayButton {
+  margin: 10px 0px 0px 10px;
+  display: flex;
+  align-self: center;
+
 }

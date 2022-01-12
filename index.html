@@ -10,12 +10,14 @@
 <body>
     <h1>ROCK PAPER SCISSORS</h1>
 
-    <div class="description"> 
-        <p class="left">See if you can beat the computer<p>
-        <p class="right">First to 3 wins!<p>
+    <h2>First to 5 wins.  Make your choice:</h2>
+
+    <div class="scores">
+        <div> </div>
+        <p>Player score: <span id="counterWin"></span><p>
+        <p>Draw score: <span id="counterDraw"></span><p>
+        <p>Computer score: <span id="counterLose"></span><p>
     </div>
-    
-    <h2>Make your choice:</h2>
     
     <div class="container">
         <div class="info">
@@ -31,21 +33,16 @@
           <button id="scissors" class="button">scissors</button>
         </div>
     </div>
+    
+    <p id="roundResults"></p>
 
-    <div class="scores">
-        <div> </div>
-        <div id="playerScore"></div>
-
-        <div id="computerScore"></div>
-
-    </div>
+    <button id="replayButton">Replay</button>
+    
     
     <script>
-    
         let counterWin = 0;
         let counterDraw = 0;
         let counterLose = 0;
-        
 
         let playerSelection = "";
         let buttons = document.querySelectorAll('.button');
@@ -54,8 +51,9 @@
             button.addEventListener("click", () => {
                 playerSelection = button.id;
                 //console.log(playerSelection);
-                if (counterWin < 3 && counterDraw < 3 && counterLose <3) {
+                if (counterWin < 5 && counterDraw < 5 && counterLose <5) {
                     game();
+                    sumGame();
                 }
                 else {
                     sumGame();
@@ -124,20 +122,44 @@
             else {
                 counterLose += 1;
             }
+            document.getElementById("counterWin").innerHTML = counterWin;
+            document.getElementById("counterDraw").innerHTML = counterDraw;
+            document.getElementById("counterLose").innerHTML = counterLose;
         }    
         
         //add up wins/losses and give result
+        let roundWin = "You have 5 wins, you win the game";
+        let roundLose = "The computer has 5 wins, you lose the game";
+        let roundDraw = "It's a draw, better luck next time";
+
         function sumGame(){
-            if (counterWin === 3) {
-                console.log("you have 3 wins, you win the game");
+            if (counterWin === 5) {
+                document.getElementById("roundResults").innerHTML = roundWin;
+                document.getElementById("replayButton").style.visibility = "visible";
             }
-            else if (counterLose === 3) {
-                console.log("computer has 3 wins, you lose the game");
+            else if (counterLose === 5) {
+                document.getElementById("roundResults").innerHTML = roundLose;
+                document.getElementById("replayButton").style.visibility = "visible";
             }
-            else if (counterDraw === 3) {
-                console.log("it's a draw, better luck next time");
+            else if (counterDraw === 5) {
+                document.getElementById("roundResults").innerHTML = roundDraw;
+                document.getElementById("replayButton").style.visibility = "visible";
             }
         }
+
+        document.getElementById("replayButton").style.visibility = "hidden";
+
+        document.getElementById("replayButton").addEventListener("click", function() {
+            counterWin = 0;
+            counterLose = 0;
+            counterDraw = 0;
+            document.getElementById("counterWin").innerHTML = counterWin;
+            document.getElementById("counterDraw").innerHTML = counterDraw;
+            document.getElementById("counterLose").innerHTML = counterLose;
+            document.getElementById("roundResults").innerHTML = "";
+            document.getElementById("replayButton").style.visibility = "hidden";
+        })
+          
 
     </script>
 </body>
